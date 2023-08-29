@@ -1,9 +1,9 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
-.container {
-  max-height: 800px;
-  max-width: 380px;
+.calculator {
+  height: auto;
+  width: 380px;
   border: 2px solid black;
   box-sizing: border-box;
   box-shadow: 0px 0px 43px 17px rgb(153, 153, 153);
@@ -16,7 +16,8 @@
   &__display {
       height: 100px;
       width: 320px;
-      border: 5px solid rgb(103, 33, 8);
+      // border: 5px solid rgb(103, 33, 8);
+      box-sizing: border-box;
       text-align: right;
       margin:20px auto;
       line-height: 100px;
@@ -24,14 +25,14 @@
       font-size: 50px;
       border-radius: 7px;
       font-weight: 600;
-      background: rgb(15, 174, 205);
+      background: rgb(252, 255, 255);
       color: rgb(75, 3, 3);
     }
   &__buttons {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 15px;
-    
+    box-sizing: border-box;
   }
   &__button {
       border: 3px solid black;
@@ -43,6 +44,7 @@
       font-weight: 600;
       font-size: 30px;
       color: antiquewhite;
+      box-sizing: border-box;
       &:hover {
           filter: brightness(85%);
           cursor: pointer;
@@ -54,13 +56,15 @@
       line-height: 100px;
       border-radius: 11px;
       box-sizing: border-box;
-      background: orange;
+      background: rgba(255, 166, 0, 0.802);
       text-align: center;
       font-weight: 600;
       font-size: 40px;
+      box-sizing: border-box;
       &:hover {
           filter: brightness(80%);
           color: grey;
+          cursor: pointer;
         }
     }
     &__button-reset {
@@ -68,14 +72,17 @@
         line-height: 100px;
         border-radius: 11px;
         box-sizing: border-box;
-        background: rgb(228, 13, 13);
+        background: rgba(255, 166, 0, 0.802);
         text-align: center;
         font-weight: 600;
         font-size: large;
         font-size: 50px;
-        color: rgb(14, 239, 239);
+        color: rgba(23, 21, 21, 0.984);
+        box-sizing: border-box;
         &:hover {
             filter: brightness(80%);
+            cursor: pointer;
+            color: grey;
           }
     }
     &__button-equal {
@@ -83,15 +90,18 @@
         line-height: 100px;
         border-radius: 11px;
         box-sizing: border-box;
-        background: rgb(104, 17, 186);
+        background: rgba(255, 166, 0, 0.802);
         text-align: center;
         font-weight: 600;
         font-size: large;
         font-size: 50px;
-        color: rgb(12, 197, 197);
-        grid-column: 2/ -1;
+        color: rgba(1, 19, 19, 0.983);
+        
+        box-sizing: border-box;
         &:hover {
             filter: brightness(80%);
+            cursor: pointer;
+            color: grey;
           }
     }
 }

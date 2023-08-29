@@ -36,13 +36,15 @@
 //         return value * value;
 //     }
 //     }
-let calc = document.querySelector('.container');
-let display = document.querySelector('.container__display');
+let calc = document.querySelector('.calculator');
+let display = document.querySelector('.calculator__display');
 
 
 calc.addEventListener('click', function (event) {
   // console.log(event.target);
-  if (event.target.classList.contains(!'container__button')) return;
+  // if (event.target.classList.contains('container__button')) {
+  //   display.innerHTML = event.target.innerText;
+  // };
 
     let value = event.target.innerText;
 
@@ -52,10 +54,9 @@ calc.addEventListener('click', function (event) {
         break;
       
       case '=':
-        if (display.innerHTML.search(/[^0-9*/+.]/mi) != -1) return;
+        if (display.innerHTML.search(/[^0-9*/+.-]/mi) != -1) return;
         display.innerHTML = eval(display.innerText); //.toFixed(2)
         break;
-      
       default:
         display.innerHTML += value;
     }
