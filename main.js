@@ -69,7 +69,6 @@ let a = "";
 let b = "";
 let sign = "";
 let finish = false;
-
 let  numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 let  actions = ['-', '+', '/', '*'];
 
@@ -77,11 +76,11 @@ let display = document.querySelector('.calculator__display');
 // функция очистки дисплея при нажатии кнопки clearAll 
 //которая вконце добавляет стартовое значение экрана равное = 0;
 function clearAll () {
-let a = "";
-let b = "";
-let sign = "";
-let finish = false;
-display.textContent = 0;
+a = "";
+b = "";
+sign = "";
+finish = false;
+display.textContent = '0';
 }
 //логика нажатой кнопки очистки с использованием функции
 document.querySelector('.calculator__button-reset').onclick = clearAll;
@@ -89,18 +88,20 @@ document.querySelector('.calculator__button-reset').onclick = clearAll;
 document.querySelector('.calculator__buttons').onclick = (event) => {
 if (!event.target.classList.contains('calculator__button')) return;
 
-if (event.target.classList.contains('calculator__button-reset')) clearAll;
+if (event.target.classList.contains('calculator__button-reset')) return;// эта команда уже обработана выше
 
 display.textContent = '';
-
 let button = event.target.textContent;
+//display.textContent += event.target.textContent;
 
 if (numbers.includes(button)) {
   if (b === "" && sign === "") {
   a += button;
   display.textContent = a;
   } else if (a !== '' && b !== '' && finish) {
-    
+    b = button;
+    finish = false;
+    display.textContent = a;
   } else {
     b += button;
     display.textContent = b;
@@ -110,21 +111,22 @@ if (numbers.includes(button)) {
 
 // если нажата клавиша операторов
 if (actions.includes(button)) {
-  sign = key;
-  console.log(a, b, sign);
+  //sign = key;
+  sign = button;
+  display.textContent = sign;
   return;
 } 
 // нажата клавиша равно 
-if (key === '=') {
-  switch (sign) {
-    case "+":
-      a = (+a) + (+b);
+if (button === '=') {
+  switch(sign) {
+    case '+':
+      a = Number(a) + Number(b);
       break;
     case '-':
-      a = a - b;
+      a -= b;
       break;
     case '*':
-      a = a * b;
+      a *= b;
       break;
     case '/':
       a = a / b;
@@ -133,6 +135,5 @@ if (key === '=') {
   finish = true;
   display.textContent = a;
 }
-
 
 }
